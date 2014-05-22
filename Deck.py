@@ -5,9 +5,6 @@ class Deck(object):
 		self.list_cards = self.generate_cards()
 
 	def draw_card(self):
-		if (self.num_cards == 0):
-			raise Exception
-
 		return self.list_cards.pop()
 
 	def size(self):
@@ -15,8 +12,8 @@ class Deck(object):
 
 	def generate_cards(self):
 		suits = ["Spades", "Clubs", "Diamonds", "Hearts"]
-		names = [("Two", 2), ("Three", 3), ("Four", 4), ("Five", 5), ("Six", 6), ("Seven", 7), 
-		("Eight", 8), ("Nine", 9), ("Ten", 10), ("Jack", 11), ("Queen", 12),  ("King", 13), ("Ace", 14), ("Joker", 15)]
+		names = [ ("Two", 15), ("Three", 3), ("Four", 4), ("Five", 5), ("Six", 6), ("Seven", 7), 
+		("Eight", 8), ("Nine", 9), ("Ten", 10), ("Jack", 11), ("Queen", 12),  ("King", 13), ("Ace", 14) , ("Joker", 16)]
 		cards = []
 		for name in names:
 			if name[0] == "Joker":
@@ -29,6 +26,7 @@ class Deck(object):
 				cards.append(card)
 		random.shuffle(cards)
 		return cards
+
 class Card(object):
 
 	def __init__(self, name, suit, num):
@@ -44,7 +42,3 @@ class Card(object):
 
 	def get_num(self):
 		return self.num
-
-if __name__ == "__main__":
-	deck = Deck()
-	print deck.size()
